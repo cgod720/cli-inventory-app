@@ -4,6 +4,7 @@ const figlet = require('figlet')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const [commands, again] = require('./helpers/commands')
+const createTable = require('./helpers/table')
 
 const performAnotherTask = () => {
     let response;
@@ -27,10 +28,14 @@ const run = () => {
             command = answer['command']
             switch(command){
                 case "View Inventory":
-                    // console.log(command)
-                    console.log(boards)
+                    // console.log(boards)
+                    const printBoards = createTable(boards)
+                    console.log(printBoards.toString())
                     performAnotherTask()
                     break;
+                case "Add Board":
+                case "Edit Board":
+                case "Delete Board":
                 case "Yes":
                     run()
                     break;
@@ -61,7 +66,7 @@ const start = () => {
     
     setTimeout(() => {
        run()
-    }, 3000)
+    }, 2000)
 }
 
 start()
