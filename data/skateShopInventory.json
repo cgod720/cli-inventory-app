@@ -1,0 +1,32 @@
+[
+    {
+      "name": "Bird Undead",
+      "brand": "Birdhouse",
+      "priceInCents": 6999,
+      "inStock": true
+    },
+    {
+      "name": "Anti-Hero",
+      "brand": "Doobie",
+      "priceInCents": 7695,
+      "inStock": false
+    },
+    {
+      "name": "Spectrum Color-Up",
+      "brand": "Alien Workshop",
+      "priceInCents": 6995,
+      "inStock": true
+    },
+    {
+      "name": "Hoban Toy Dolls",
+      "brand": "Toy Machine",
+      "priceInCents": 7395,
+      "inStock": true
+    },
+    {
+      "name": "Delfino Fortune Teller",
+      "brand": "Santa Cruz",
+      "priceInCents": 9999,
+      "inStock": false
+    }
+  ]
