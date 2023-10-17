@@ -6,6 +6,32 @@ const inquirer = require('inquirer')
 const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 
+const allFonts = () => {
+    const fonts = figlet.fontsSync()
+        let i = 0
+        setInterval(() => {
+            figlet('Hello Space', { font: fonts[i] }, (err, data) => err ? console.log(err) : console.log(`${fonts[i]}:\n`, data))
+            i++
+            if(i === 189) return
+        }, 3000)
+}
+
+const end = () => {
+    figlet(
+        'See you later!',
+        {
+            font: "Bolger",
+            horizontalLayout: 'default',
+            verticalLayout: 'default',
+            width: 200,
+            whitespaceBreak: false
+        },
+        (err, data) => {
+            console.log(chalk.magenta(data))
+        }
+    )
+}
+
 const performAnotherTask = () => {
     let response;
     inquirer
@@ -14,7 +40,8 @@ const performAnotherTask = () => {
             if(answer['command'] === "Yes"){
                 run()
             } else {
-                console.log("Thanks for using Skate Yard!")
+                // console.log("Thanks for using Skate Yard!")
+                end()
             }
         })
 }
@@ -71,15 +98,5 @@ const start = () => {
 
 start()
 
-
-const allFonts = () => {
-    const fonts = figlet.fontsSync()
-        let i = 0
-        setInterval(() => {
-            figlet('Hello Space', { font: fonts[i] }, (err, data) => err ? console.log(err) : console.log(`${fonts[i]}:\n`, data))
-            i++
-            if(i === 189) return
-        }, 3000)
-}
 
 
