@@ -115,6 +115,12 @@ const editTheBoard = (id, index, arrOfBoards, func) => {
                 id: id,
                 ...answers
             }
+            Object.keys(answers).forEach(key => {
+                if(!answers[key]){
+                    updatedBoard[key] = arrOfBoards[index][key]
+                }
+            })
+
             boards.splice(index, 1, updatedBoard)
             writeJSONFile('./data', 'skateShopInventory.json', arrOfBoards)
             func()
