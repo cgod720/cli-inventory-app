@@ -1,9 +1,8 @@
 const { readJSONFile } = require('./helpers/fileSystem')
-const { start, end, addBoard, editBoard } = require('./helpers/lifeCycle')
+const { start, end, addBoard, editBoard, deleteBoard } = require('./helpers/lifeCycle')
 const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 const figlet = require('figlet')
-const chalk = require('chalk')
 const inquirer = require('inquirer')
 
 const allFonts = () => {
@@ -28,7 +27,6 @@ const performAnotherTask = () => {
         })
 }
 
-
 const run = () => {
     const boards = readJSONFile('./data', 'skateShopInventory.json')
     let command;
@@ -49,6 +47,8 @@ const run = () => {
                     editBoard(performAnotherTask)
                     break;
                 case "Delete Board":
+                    deleteBoard(performAnotherTask)
+                    break;
                 case "Yes":
                     run()
                     break;

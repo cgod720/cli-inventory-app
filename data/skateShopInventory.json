@@ -38,15 +38,8 @@
     "id": "VLWnWIy_e-",
     "name": "Sweet",
     "brand": "FLIP",
-    "priceInCents": "9999",
+    "priceInCents": "9998",
     "inStock": "true"
-  },
-  {
-    "id": "LtUL0YHdz7",
-    "name": "Sweet2",
-    "brand": "FLIP",
-    "priceInCents": "0000",
-    "inStock": "false"
   },
   {
     "id": "3WeHOnOfqJ",

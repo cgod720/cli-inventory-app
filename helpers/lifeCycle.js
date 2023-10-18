@@ -28,7 +28,6 @@ const start = (func) => {
     }, 2000)
 }
 
-
 const end = () => {
     figlet(
         'See you later!',
@@ -84,8 +83,7 @@ const addBoard = (func) => {
         // return responses
 }
 
-
-const editTheBoard = (id, index, arrOfBoards, func) => {
+const editTheBoard = (id, index, func) => {
     inquirer
         .prompt([
             {
@@ -117,12 +115,12 @@ const editTheBoard = (id, index, arrOfBoards, func) => {
             }
             Object.keys(answers).forEach(key => {
                 if(!answers[key]){
-                    updatedBoard[key] = arrOfBoards[index][key]
+                    updatedBoard[key] = boards[index][key]
                 }
             })
 
             boards.splice(index, 1, updatedBoard)
-            writeJSONFile('./data', 'skateShopInventory.json', arrOfBoards)
+            writeJSONFile('./data', 'skateShopInventory.json', boards)
             func()
         })
 
@@ -142,11 +140,29 @@ const editBoard = (func) => {
             console.log(answers, id)
             const boardToUpdateId = boards.findIndex((board) => board.id == id)
             // console.log(boardToUpdateId)
-            editTheBoard(id, boardToUpdateId, boards, func)
+            editTheBoard(id, boardToUpdateId, func)
+        })
+}
+
+const deleteBoard = (func) => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Enter the ID of the board to delete'
+            }
+        ])
+        .then(answers => {
+            const id = answers['id']
+            const boardToDeleteIndex = boards.findIndex(board => board.id === id)
+            boards.splice(boardToDeleteIndex, 1)
+            writeJSONFile('./data', 'skateShopInventory.json', boards)
+            func()
         })
 }
 
 
 
 
-module.exports = { start, end, addBoard, editBoard }
+module.exports = { start, end, addBoard, editBoard, deleteBoard }
