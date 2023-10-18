@@ -1,5 +1,5 @@
 const { readJSONFile } = require('./helpers/fileSystem')
-const { start, end } = require('./helpers/lifeCycle')
+const { start, end, addBoard } = require('./helpers/lifeCycle')
 const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 const boards = readJSONFile('./data', 'skateShopInventory.json')
@@ -34,7 +34,7 @@ const run = () => {
     let command;
     inquirer
         .prompt(commands)
-        .then(answer => {
+        .then((answer) => {
             command = answer['command']
             switch(command){
                 case "View Inventory":
@@ -43,6 +43,9 @@ const run = () => {
                     performAnotherTask()
                     break;
                 case "Add Board":
+                    addBoard()
+                    // console.log(createTable(boards).toString()
+                    break;
                 case "Edit Board":
                 case "Delete Board":
                 case "Yes":

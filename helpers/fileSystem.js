@@ -1,4 +1,4 @@
-const { writeFileSync, readFileSync, read, readFile } = require('node:fs')
+const { writeFileSync, readFileSync } = require('node:fs')
 
 // console.log(writeFileSync, readFileSync)
 
@@ -8,6 +8,11 @@ const readJSONFile = (path, file) => {
     return data ? JSON.parse(data) : []
 }
 
+const writeJSONFile = (path, file, data) => {
+    data = JSON.stringify(data, null, 2)
+    writeFileSync(`${path}/${file}`, data)
+}
 
 
-module.exports = { readJSONFile }
+
+module.exports = { readJSONFile, writeJSONFile }

@@ -1,32 +1,44 @@
 [
-    {
-      "name": "Bird Undead",
-      "brand": "Birdhouse",
-      "priceInCents": 6999,
-      "inStock": true
-    },
-    {
-      "name": "Anti-Hero",
-      "brand": "Doobie",
-      "priceInCents": 7695,
-      "inStock": false
-    },
-    {
-      "name": "Spectrum Color-Up",
-      "brand": "Alien Workshop",
-      "priceInCents": 6995,
-      "inStock": true
-    },
-    {
-      "name": "Hoban Toy Dolls",
-      "brand": "Toy Machine",
-      "priceInCents": 7395,
-      "inStock": true
-    },
-    {
-      "name": "Delfino Fortune Teller",
-      "brand": "Santa Cruz",
-      "priceInCents": 9999,
-      "inStock": false
-    }
-  ]
+  {
+    "id": "00X0x13e4",
+    "name": "Bird Undead",
+    "brand": "Birdhouse",
+    "priceInCents": 6999,
+    "inStock": true
+  },
+  {
+    "id": "TD00B2-sdW",
+    "name": "Anti-Hero",
+    "brand": "Doobie",
+    "priceInCents": 7695,
+    "inStock": false
+  },
+  {
+    "id": "TF54n6-76",
+    "name": "Spectrum Color-Up",
+    "brand": "Alien Workshop",
+    "priceInCents": 6995,
+    "inStock": true
+  },
+  {
+    "id": "1F8UAS-X-1",
+    "name": "Hoban Toy Dolls",
+    "brand": "Toy Machine",
+    "priceInCents": 7395,
+    "inStock": true
+  },
+  {
+    "id": "W32vUBV-s_",
+    "name": "Delfino Fortune Teller",
+    "brand": "Santa Cruz",
+    "priceInCents": 9999,
+    "inStock": false
+  },
+  {
+    "id": "VLWnWIy_e-",
+    "name": "Sweet",
+    "brand": "FLIP",
+    "priceInCents": "9999",
+    "inStock": "true"
+  }
+]

@@ -1,5 +1,9 @@
 const figlet = require('figlet')
 const chalk = require('chalk')
+const inquirer = require('inquirer')
+const { nanoid } = require('nanoid')
+const { writeJSONFile, readJSONFile } = require('../helpers/fileSystem')
+const boards = readJSONFile('./data', 'skateShopInventory.json')
 
 const start = (func) => {
     figlet(
@@ -25,9 +29,6 @@ const start = (func) => {
 }
 
 
-
-
-
 const end = () => {
     figlet(
         'See you later!',
@@ -44,6 +45,43 @@ const end = () => {
     )
 }
 
+const addBoard = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: "Enter a board name:"
+            },
+            {
+                type: 'input',
+                name: 'brand',
+                message: "Enter the board's brand:"
+            },
+            {
+                type: 'input',
+                name: 'priceInCents',
+                message: "Enter a board's price:"
+            },
+            {
+                type: 'input',
+                name: 'inStock',
+                message: "Is it in stock? [true, false]"
+            },
+
+        ])
+        .then((answers) => {
+            console.log(answers)
+            const newBoard = {
+                id: nanoid(10),
+                ...answers
+            }
+            console.log(newBoard)
+            boards.push(newBoard)
+            writeJSONFile('./data', 'skateShopInventory.json', boards)
+        })
+        // return responses
+}
 
 
-module.exports = { start, end }
+module.exports = { start, end, addBoard }
