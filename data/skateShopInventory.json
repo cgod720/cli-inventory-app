@@ -50,16 +50,16 @@
   },
   {
     "id": "3WeHOnOfqJ",
-    "name": "Sweet3",
-    "brand": "FLIP",
-    "priceInCents": "0000",
-    "inStock": "false"
+    "name": "Hitz Battle Gate Pro",
+    "brand": "Creature",
+    "priceInCents": "9997",
+    "inStock": "true"
   },
   {
-    "id": "N5eetdOCxU",
-    "name": "",
-    "brand": "",
-    "priceInCents": "",
-    "inStock": ""
+    "id": "jf317AvNb4",
+    "name": "Squiggle Skateboard Deck",
+    "brand": "CCS",
+    "priceInCents": "8998",
+    "inStock": "true"
   }
 ]

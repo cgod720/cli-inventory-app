@@ -1,5 +1,5 @@
 const { readJSONFile } = require('./helpers/fileSystem')
-const { start, end, addBoard } = require('./helpers/lifeCycle')
+const { start, end, addBoard, editBoard } = require('./helpers/lifeCycle')
 const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 const figlet = require('figlet')
@@ -46,6 +46,8 @@ const run = () => {
                     addBoard(performAnotherTask)
                     break;
                 case "Edit Board":
+                    editBoard(performAnotherTask)
+                    break;
                 case "Delete Board":
                 case "Yes":
                     run()

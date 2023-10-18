@@ -71,12 +71,12 @@ const addBoard = (func) => {
 
         ])
         .then((answers) => {
-            console.log(answers)
+            // console.log(answers)
             const newBoard = {
                 id: nanoid(10),
                 ...answers
             }
-            console.log(newBoard)
+            // console.log(newBoard)
             boards.push(newBoard)
             writeJSONFile('./data', 'skateShopInventory.json', boards)
             func()
@@ -85,4 +85,62 @@ const addBoard = (func) => {
 }
 
 
-module.exports = { start, end, addBoard }
+const editTheBoard = (id, index, arrOfBoards, func) => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: "Enter a board name:"
+            },
+            {
+                type: 'input',
+                name: 'brand',
+                message: "Enter the board's brand:"
+            },
+            {
+                type: 'input',
+                name: 'priceInCents',
+                message: "Enter a board's price:"
+            },
+            {
+                type: 'input',
+                name: 'inStock',
+                message: "Is it in stock? [true, false]"
+            },
+
+        ])
+        .then((answers) => {
+            const updatedBoard = {
+                id: id,
+                ...answers
+            }
+            boards.splice(index, 1, updatedBoard)
+            writeJSONFile('./data', 'skateShopInventory.json', arrOfBoards)
+            func()
+        })
+
+}
+
+const editBoard = (func) => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'id',
+                message: "Enter the ID of the board you wish you edit:"
+            }
+        ])
+        .then((answers) => {
+            const id = answers['id']
+            console.log(answers, id)
+            const boardToUpdateId = boards.findIndex((board) => board.id == id)
+            // console.log(boardToUpdateId)
+            editTheBoard(id, boardToUpdateId, boards, func)
+        })
+}
+
+
+
+
+module.exports = { start, end, addBoard, editBoard }

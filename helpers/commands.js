@@ -3,7 +3,7 @@ const commands = [
         type: 'list',
         name: 'command',
         message: 'What would you like to do?',
-        choices: ['View Inventory', 'Add Board', 'Update Item', 'Remove Item']
+        choices: ['View Inventory', 'Add Board', 'Edit Board', 'Remove Item']
     },
     {
         type: 'list',
