@@ -2,7 +2,6 @@ const { readJSONFile } = require('./helpers/fileSystem')
 const { start, end, addBoard } = require('./helpers/lifeCycle')
 const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
-const boards = readJSONFile('./data', 'skateShopInventory.json')
 const figlet = require('figlet')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
@@ -31,6 +30,7 @@ const performAnotherTask = () => {
 
 
 const run = () => {
+    const boards = readJSONFile('./data', 'skateShopInventory.json')
     let command;
     inquirer
         .prompt(commands)
@@ -43,8 +43,7 @@ const run = () => {
                     performAnotherTask()
                     break;
                 case "Add Board":
-                    addBoard()
-                    // console.log(createTable(boards).toString()
+                    addBoard(performAnotherTask)
                     break;
                 case "Edit Board":
                 case "Delete Board":
@@ -58,6 +57,7 @@ const run = () => {
 
 
 start(run)
+
 
 
 

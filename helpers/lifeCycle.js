@@ -45,7 +45,7 @@ const end = () => {
     )
 }
 
-const addBoard = () => {
+const addBoard = (func) => {
     inquirer
         .prompt([
             {
@@ -79,6 +79,7 @@ const addBoard = () => {
             console.log(newBoard)
             boards.push(newBoard)
             writeJSONFile('./data', 'skateShopInventory.json', boards)
+            func()
         })
         // return responses
 }
