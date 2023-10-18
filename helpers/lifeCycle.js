@@ -30,16 +30,19 @@ const start = (func) => {
 
 const end = () => {
     figlet(
-        'See you later!',
+        'Later!',
         {
             font: "Bolger",
-            horizontalLayout: 'controlled smushing',
+            horizontalLayout: 'default',
             verticalLayout: 'default',
             width: 200,
             whitespaceBreak: false
         },
         (err, data) => {
-            console.log(chalk.green(data))
+            const colors = ['red', 'green', 'blue', 'magenta', 'yellow', 'cyan', 'gray', 'white']
+            const colorIndex = Math.floor(Math.random() * colors.length)
+            const color = colors[colorIndex]
+            console.log(chalk[color](data))
         }
     )
 }
@@ -70,17 +73,14 @@ const addBoard = (func) => {
 
         ])
         .then((answers) => {
-            // console.log(answers)
             const newBoard = {
                 id: nanoid(10),
                 ...answers
             }
-            // console.log(newBoard)
             boards.push(newBoard)
             writeJSONFile('./data', 'skateShopInventory.json', boards)
             func()
         })
-        // return responses
 }
 
 const editTheBoard = (id, index, func) => {
@@ -137,9 +137,7 @@ const editBoard = (func) => {
         ])
         .then((answers) => {
             const id = answers['id']
-            console.log(answers, id)
             const boardToUpdateId = boards.findIndex((board) => board.id == id)
-            // console.log(boardToUpdateId)
             editTheBoard(id, boardToUpdateId, func)
         })
 }
