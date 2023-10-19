@@ -21,28 +21,14 @@ function startLoadingAnimation() {
   };
 }
 
-function askQuestion() {
-  // Start loading animation
-  const stopLoadingAnimation = startLoadingAnimation();
-
-  // Delay for a moment before asking the question
-  setTimeout(() => {
-    stopLoadingAnimation(); // Stop loading animation
-    inquirer
-      .prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: 'What is your name?'
-        }
-      ])
-      .then(answer => {
-        console.log(`Hello, ${answer.name}!`);
-      });
-  }, 1200);
+const spinnerDelay = (clearSpinner, func, arg) => {
+    setTimeout(() => {
+      clearSpinner()
+      func(arg)
+    }, 1200)
 }
 
 
 
 
-module.exports = { startLoadingAnimation }
+module.exports = { startLoadingAnimation, spinnerDelay }

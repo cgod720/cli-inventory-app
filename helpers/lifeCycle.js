@@ -7,9 +7,9 @@ const boards = readJSONFile('./data', 'skateShopInventory.json')
 
 const start = (func) => {
     figlet(
-        'Skate Yard',
+        'Skate\n Yard',
         {
-            font: "Bolger",
+            font: "3D-ASCII",
             horizontalLayout: 'default',
             verticalLayout: 'default',
             width: 200,
@@ -20,7 +20,7 @@ const start = (func) => {
             console.log('Error')
             return
         }
-        console.log(chalk.red(data))
+        console.log(chalk.white(data))
     })
     
     setTimeout(() => {
@@ -30,9 +30,9 @@ const start = (func) => {
 
 const end = () => {
     figlet(
-        'Later!',
+        'Later',
         {
-            font: "Bolger",
+            font: "3D-ASCII",
             horizontalLayout: 'default',
             verticalLayout: 'default',
             width: 200,

@@ -4,13 +4,13 @@ const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 const figlet = require('figlet')
 const inquirer = require('inquirer')
-const { startLoadingAnimation } = require('./helpers/spinner')
+const { startLoadingAnimation, spinnerDelay } = require('./helpers/spinner')
 
 const allFonts = () => {
     const fonts = figlet.fontsSync()
         let i = 0
         setInterval(() => {
-            figlet('Hello Space', { font: fonts[i] }, (err, data) => err ? console.log(err) : console.log(`${fonts[i]}:\n`, data))
+            figlet('Later', { font: fonts[i] }, (err, data) => err ? console.log(err) : console.log(`${fonts[i]}:\n`, data))
             i++
             if(i === 189) return
         }, 3000)
@@ -35,10 +35,10 @@ const run = () => {
         .prompt(commands)
         .then((answer) => {
             command = answer['command']
+            const stopLoadingAnimation = startLoadingAnimation()
             switch(command){
                 case "View Inventory":
                     const printBoards = createTable(boards)
-                    const stopLoadingAnimation = startLoadingAnimation()
                     setTimeout(() => {
                         stopLoadingAnimation()
                         console.log(printBoards.toString())
@@ -46,13 +46,13 @@ const run = () => {
                     }, 1200)
                     break;
                 case "Add Board":
-                    addBoard(performAnotherTask)
+                    spinnerDelay(stopLoadingAnimation, addBoard, performAnotherTask)
                     break;
                 case "Edit Board":
-                    editBoard(performAnotherTask)
+                    spinnerDelay(stopLoadingAnimation, editBoard, performAnotherTask)
                     break;
                 case "Delete Board":
-                    deleteBoard(performAnotherTask)
+                    spinnerDelay(stopLoadingAnimation, deleteBoard, performAnotherTask)
                     break;
             }
         })
