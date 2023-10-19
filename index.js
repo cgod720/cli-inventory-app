@@ -49,9 +49,6 @@ const run = () => {
                 case "Delete Board":
                     deleteBoard(performAnotherTask)
                     break;
-                case "Yes":
-                    run()
-                    break;
             }
         })
 }
