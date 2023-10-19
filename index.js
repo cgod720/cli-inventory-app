@@ -4,6 +4,7 @@ const [commands, again] = require('./helpers/commands')
 const createTable = require('./helpers/table')
 const figlet = require('figlet')
 const inquirer = require('inquirer')
+const { startLoadingAnimation } = require('./helpers/spinner')
 
 const allFonts = () => {
     const fonts = figlet.fontsSync()
@@ -24,7 +25,7 @@ const performAnotherTask = () => {
             } else {
                 end()
             }
-        })
+        }) 
 }
 
 const run = () => {
@@ -37,8 +38,12 @@ const run = () => {
             switch(command){
                 case "View Inventory":
                     const printBoards = createTable(boards)
-                    console.log(printBoards.toString())
+                    const stopLoadingAnimation = startLoadingAnimation()
+                    setTimeout(() => {
+                        stopLoadingAnimation()
+                        console.log(printBoards.toString())
                     performAnotherTask()
+                    }, 1200)
                     break;
                 case "Add Board":
                     addBoard(performAnotherTask)
