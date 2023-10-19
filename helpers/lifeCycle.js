@@ -77,6 +77,12 @@ const addBoard = (func) => {
                 id: nanoid(10),
                 ...answers
             }
+            for(let key in answers){
+                if(answers[key] == ''){
+                    console.log(`Field [${key}] cannot be empty`)
+                    return
+                }
+            }
             boards.push(newBoard)
             writeJSONFile('./data', 'skateShopInventory.json', boards)
             func()
